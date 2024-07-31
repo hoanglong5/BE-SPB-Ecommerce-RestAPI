@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: ubuntu/postgres
+    container_name: postgres-ecommerce-db
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: s3cretpass
+    ports:
+      - "5102:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
