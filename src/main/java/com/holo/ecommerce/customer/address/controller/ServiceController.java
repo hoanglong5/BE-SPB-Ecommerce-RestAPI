@@ -18,11 +18,11 @@ public class ServiceController {
         return ResponseEntity.ok(addressService.GetAllAddress());
     }
     @GetMapping("/{addressID}")
-    public ResponseEntity<Address> GetAddress(@PathVariable Long addressID){
-        return ResponseEntity.ok(addressService.GetAddress(addressID));
+    public ResponseEntity<Address> GetAddress(@PathVariable Long addressId){
+        return ResponseEntity.ok(addressService.GetAddress(addressId));
     }
     @DeleteMapping("/{addressID}")
-    public ResponseEntity<Address> DeleteAddress(@PathVariable Long addressID){
-        return ResponseEntity.ok(addressService.DeleteAddress(addressID));
+    public ResponseEntity<Address> DeleteAddress(@PathVariable Long addressId){
+        return ResponseEntity.ok(addressService.DeleteAddress(addressId));
     }
 }

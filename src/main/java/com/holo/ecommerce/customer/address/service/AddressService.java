@@ -6,6 +6,7 @@ import com.holo.ecommerce.customer.customer.entity.User;
 import com.holo.ecommerce.customer.customer.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -23,8 +24,8 @@ public class AddressService {
         addressRepository.save(addressCreating);
         return addressCreating;
    }
-    public Address DeleteAddress(Long addressID){
-         addressRepository.deleteById(addressID);
-        return GetAddress(addressID);
+    public Address DeleteAddress(Long addressId){
+         addressRepository.deleteById(addressId);
+        return GetAddress(addressId);
     }
 }

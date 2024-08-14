@@ -29,8 +29,9 @@ public abstract class BaseService<E,D extends JpaRepository<E,Long>> {
         entity = dao.save(entity);
         return entity;
     }
-    public void Delete(E entity){
+    public E Delete(E entity){
         dao.delete(entity);
+        return entity;
     }
     protected Integer GetSize(Optional<Integer> sizeOptional) {
         Integer size = DEFAULT_SIZE;

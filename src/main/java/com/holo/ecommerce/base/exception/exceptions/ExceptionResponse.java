@@ -13,4 +13,5 @@ public class ExceptionResponse {
     private LocalDate errorDate;
     private String messages;
     private String detail;
+    private boolean isSuccess;
 }

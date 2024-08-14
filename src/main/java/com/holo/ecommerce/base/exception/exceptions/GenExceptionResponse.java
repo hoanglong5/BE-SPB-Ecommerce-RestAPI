@@ -17,7 +17,8 @@ public class GenExceptionResponse{
         LocalDate errorTime = LocalDate.now();
         String message = ex.getMessage();
         String description = webRequest.getDescription(false);
-        ExceptionResponse exceptionResponse = new ExceptionResponse(errorTime,message,description);
+        boolean isSuccess = false;
+        ExceptionResponse exceptionResponse = new ExceptionResponse(errorTime,message,description,isSuccess);
         RestResponse<ExceptionResponse> response = RestResponse.error(exceptionResponse);
         response.setMessages(message);
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
