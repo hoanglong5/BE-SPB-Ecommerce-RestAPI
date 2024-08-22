@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum PaymentMessage {
+public enum PaymentMessageResponse {
     //Payment type
     SUCCESSFULLY_CREATED_PAYMENT_TYPE("Successfully created payment type","message for create"),
     SUCCESSFULLY_DELETE_PAYMENT_TYPE("Successfully deleted payment type with id: ","message for delete"),

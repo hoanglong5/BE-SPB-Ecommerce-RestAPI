@@ -39,7 +39,7 @@ public class UserService {
             addressCreating.setAddressLine(address.getAddressLine());
             addressCreating.setCity(address.getCity());
             addressCreating.setRegion(address.getRegion());
-            addressCreating = addressService.CreateAddress(addressCreating);
+            addressCreating = addressService.SaveAddress(addressCreating);
             user.getAddresses().add(addressCreating);
         }
         userEntityService.SaveUser(user);
@@ -59,7 +59,7 @@ public class UserService {
         address.setRegion(addressUpdating.getRegion());
         address.setStreetNumber(addressUpdating.getStreetNumber());
         address.setCity(addressUpdating.getCity());
-        addressService.CreateAddress(address);
+        addressService.SaveAddress(address);
         return user;
     }
     @Transactional

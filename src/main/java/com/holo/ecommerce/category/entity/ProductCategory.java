@@ -22,8 +22,14 @@ public class ProductCategory {
     private Long id;
     @Column(name = "category_name")
     private String categoryName;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_category_id")
+    private ProductCategory parentCategory;
+    @OneToMany(mappedBy = "parentCategory", cascade = CascadeType.ALL)
+    private Set<ProductCategory> subCategories;
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private Set<Product> products;
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private Set<Variation> variations;
+
 }

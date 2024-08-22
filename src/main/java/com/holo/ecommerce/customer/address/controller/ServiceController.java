@@ -21,6 +21,10 @@ public class ServiceController {
     public ResponseEntity<Address> GetAddress(@PathVariable Long addressId){
         return ResponseEntity.ok(addressService.GetAddress(addressId));
     }
+    @PostMapping
+    public ResponseEntity<Address> CreatingAddress(@RequestBody Address address){
+        return ResponseEntity.ok(addressService.SaveAddress(address));
+    }
     @DeleteMapping("/{addressID}")
     public ResponseEntity<Address> DeleteAddress(@PathVariable Long addressId){
         return ResponseEntity.ok(addressService.DeleteAddress(addressId));

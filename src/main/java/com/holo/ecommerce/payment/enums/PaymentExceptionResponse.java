@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum PaymentExceptionMessage {
+public enum PaymentExceptionResponse {
     //Payment type
     PAYMENT_TYPE_NOT_FOUND("Payment type not found!","Please check the id of payment type."),
     //Payment method

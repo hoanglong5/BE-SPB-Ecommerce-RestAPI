@@ -1,6 +1,8 @@
 package com.holo.ecommerce.customer.address.service;
 
+import com.holo.ecommerce.base.exception.ItemNotFoundException;
 import com.holo.ecommerce.customer.address.entity.Address;
+import com.holo.ecommerce.customer.address.enums.AddressMessageResponse;
 import com.holo.ecommerce.customer.address.repository.AddressRepository;
 import com.holo.ecommerce.customer.customer.entity.User;
 import com.holo.ecommerce.customer.customer.service.UserService;
@@ -18,11 +20,11 @@ public class AddressService {
         return addressRepository.findAll();
     }
     public Address GetAddress(Long addressId){
-        return addressRepository.findById(addressId).orElseThrow();
+        return addressRepository.findById(addressId).orElseThrow(()->new ItemNotFoundException(AddressMessageResponse.ADDRESS_ENUMS_NOT_FOUND.getMessage()));
     }
-    public Address CreateAddress(Address addressCreating){
-        addressRepository.save(addressCreating);
-        return addressCreating;
+    public Address SaveAddress(Address addressSaving){
+        addressRepository.save(addressSaving);
+        return addressSaving;
    }
     public Address DeleteAddress(Long addressId){
          addressRepository.deleteById(addressId);

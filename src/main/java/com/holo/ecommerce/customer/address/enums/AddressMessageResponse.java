@@ -5,8 +5,8 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum AddressEnums {
-    USER_NOT_FOUND("User not found!","Please check the id of user.");
+public enum AddressMessageResponse {
+    ADDRESS_ENUMS_NOT_FOUND("Address not found!","Please check the id of address.");
     private final String message;
     private final String detailMessage;
 }
