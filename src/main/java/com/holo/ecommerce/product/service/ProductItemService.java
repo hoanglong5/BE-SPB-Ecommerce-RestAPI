@@ -3,7 +3,9 @@ package com.holo.ecommerce.product.service;
 import com.holo.ecommerce.category.entity.ProductCategory;
 import com.holo.ecommerce.category.service.ProductCategoryService;
 import com.holo.ecommerce.product.entity.Product;
+import com.holo.ecommerce.product.entity.ProductItem;
 import com.holo.ecommerce.product.service.entityservice.ProductEntityService;
+import com.holo.ecommerce.product.service.entityservice.ProductItemEntityService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,29 +14,28 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class ProductItemService {
-    private final ProductEntityService productEntityService;
-    private final ProductItemService productItemService;
-    private final ProductCategoryService productCategoryService;
-    public List<Product> GetAllProduct(){
-        return productEntityService.GetAllProduct();
+    private final ProductItemEntityService productItemEntityService;
+    private final ProductService productService;
+    public List<ProductItem> GetAllProduct(){
+        return productItemEntityService.GetAllProductItem();
     }
-    public Product GetProduct(Long productId){
-        return productEntityService.GetProduct(productId);
+    public ProductItem GetProduct(Long productItemId){
+        return productItemEntityService.GetProductItem(productItemId);
     }
-    public Product DeleteProduct(Long productId){
-        return productEntityService.DeleteProduct(productId);
+    public ProductItem DeleteProduct(Long productItemId){
+        return productItemEntityService.DeleteProductItem(productItemId);
     }
-    public Product CreateProduct(Product product){
-        ProductCategory productCategory = productCategoryService.GetProductCategory(product.getCategory().getId());
-        return productEntityService.SaveProduct(product);
+    public ProductItem CreateProduct(ProductItem productItem){
+        return productItemEntityService.SaveProductItem(productItem);
     }
-    public Product UpdateProduct(Product productUpdating, Long productId){
-        Product product = productEntityService.GetProduct(productId);
-        ProductCategory productCategory = productCategoryService.GetProductCategory(productUpdating.getCategory().getId());
-        product.setName(productUpdating.getName());
-        product.setDescription(productUpdating.getDescription());
-        product.setProductImage(productUpdating.getProductImage());
-        product.setCategory(productCategory);
-        return productEntityService.SaveProduct(product);
+    public ProductItem UpdateProductItem(ProductItem productItemUpdating,Long productItemId){
+        Product product = productService.GetProduct(productItemUpdating.getProduct().getId());
+        ProductItem productItem = productItemEntityService.GetProductItem(productItemId);
+        productItem.setSku(productItemUpdating.getSku());
+        productItem.setPrice(productItemUpdating.getPrice());
+        productItem.setQuantity(productItemUpdating.getQuantity());
+        productItem.setProductItemImage(productItemUpdating.getProductItemImage());
+        productItem.setProduct(product);
+        return productItemEntityService.SaveProductItem(productItem);
     }
 }
