@@ -2,7 +2,6 @@ package com.holo.ecommerce.base.service;
 
 import com.holo.ecommerce.base.enums.ExceptionMessageResponse;
 import com.holo.ecommerce.base.exception.ItemNotFoundException;
-import com.holo.ecommerce.base.exception.exceptions.ExceptionResponse;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -22,6 +22,10 @@ public abstract class BaseService<E,D extends JpaRepository<E,Long>> {
     public List<E> FindAll(){
         return dao.findAll();
     }
+    public List<E> FindAllById(Set<Long> ids ){
+        return dao.findAllById(ids);
+    }
+
     public E FindById(Long id){
         return dao.findById(id).orElseThrow(() -> new ItemNotFoundException(ExceptionMessageResponse.ITEM_NOT_FOUND.getMessage()));
     }

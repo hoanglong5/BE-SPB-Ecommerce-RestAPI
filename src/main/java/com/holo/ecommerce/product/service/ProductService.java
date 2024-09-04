@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
+
 @Service
 @AllArgsConstructor
 public class ProductService {
@@ -22,8 +24,9 @@ public class ProductService {
     public Product DeleteProduct(Long productId){
         return productEntityService.DeleteProduct(productId);
     }
-    public Product CreateProduct(Product product){
-        return productEntityService.SaveProduct(product);
+    public Product CreateProduct(Product productCreating){
+        ProductCategory category = productCategoryService.GetProductCategory(productCreating.getCategory().getId());
+        return productEntityService.SaveProduct(productCreating);
     }
     public Product UpdateProduct(Product productUpdating, Long productId){
         Product product = productEntityService.GetProduct(productId);

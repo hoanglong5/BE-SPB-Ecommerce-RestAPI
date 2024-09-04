@@ -23,9 +23,7 @@ public class PaymentTypeService {
 
     @Transactional
     public PaymentType CreatePaymentType(PaymentType paymentTypeCreating){
-        PaymentType paymentType = new PaymentType();
-        paymentType.setType(paymentTypeCreating.getType());
-        return paymentTypeEntityService.SavePaymentType(paymentType);
+        return paymentTypeEntityService.SavePaymentType(paymentTypeCreating);
     }
 
     @Transactional

@@ -1,5 +1,6 @@
 package com.holo.ecommerce.product.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.holo.ecommerce.category.entity.ProductCategory;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -26,6 +27,7 @@ public class Variation {
     @JoinColumn(name = "category_id")
     private ProductCategory category;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "variation", cascade = CascadeType.ALL)
     private Set<VariationOption> options;
 }

@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -42,6 +44,17 @@ public class UserService {
             addressCreating = addressService.SaveAddress(addressCreating);
             user.getAddresses().add(addressCreating);
         }
+//        Set<Address> processedAddresses = userCreating.getAddresses().stream()
+//                .map(address -> {
+//                    Address addressCreating = new Address();
+//                    addressCreating.setUnitNumber(address.getUnitNumber());
+//                    addressCreating.setStreetNumber(address.getStreetNumber());
+//                    addressCreating.setAddressLine(address.getAddressLine());
+//                    addressCreating.setCity(address.getCity());
+//                    addressCreating.setRegion(address.getRegion());
+//                    return addressService.SaveAddress(addressCreating);
+//                })
+//                .collect(Collectors.toSet());
         userEntityService.SaveUser(user);
         return user;
     }

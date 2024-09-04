@@ -1,5 +1,6 @@
 package com.holo.ecommerce.product.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.holo.ecommerce.category.entity.ProductCategory;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -26,6 +27,7 @@ public class Product {
     @Column(name = "product_image")
     private String productImage;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private ProductCategory category;

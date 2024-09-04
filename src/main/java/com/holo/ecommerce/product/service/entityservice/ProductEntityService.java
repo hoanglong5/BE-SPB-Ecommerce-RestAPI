@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ProductEntityService extends BaseService<Product, ProductRepository> {
@@ -19,6 +20,9 @@ public class ProductEntityService extends BaseService<Product, ProductRepository
     }
     public List<Product> GetAllProduct(){
         return getDao().findAll();
+    }
+    public List<Product> GetAllProductById(Set<Long> ids ){
+        return getDao().findAllById(ids);
     }
     public Product GetProduct(Long productId){
         return getDao().findById(productId).orElseThrow(() -> new ItemNotFoundException(ProductExceptionResponse.PRODUCT_EXCEPTION_RESPONSE_NOT_FOUND.getMessage()));

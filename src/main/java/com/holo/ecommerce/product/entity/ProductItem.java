@@ -1,5 +1,6 @@
 package com.holo.ecommerce.product.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,6 +31,7 @@ public class ProductItem {
     @JoinColumn(name = "product_id")
     private Product product;
 
+    @JsonManagedReference
     @ManyToMany(mappedBy = "productItems")
     private Set<VariationOption> variationOptions;
 }

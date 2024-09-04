@@ -23,8 +23,7 @@ public class AddressService {
         return addressRepository.findById(addressId).orElseThrow(()->new ItemNotFoundException(AddressMessageResponse.ADDRESS_ENUMS_NOT_FOUND.getMessage()));
     }
     public Address SaveAddress(Address addressSaving){
-        addressRepository.save(addressSaving);
-        return addressSaving;
+        return addressRepository.save(addressSaving);
    }
     public Address DeleteAddress(Long addressId){
          addressRepository.deleteById(addressId);

@@ -1,5 +1,6 @@
 package com.holo.ecommerce.promotion.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.holo.ecommerce.category.entity.ProductCategory;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -30,13 +31,7 @@ public class Promotion {
     private LocalDate startDate;
     @Column(name = "end_date")
     private LocalDate endDate;
-
-    @ManyToMany
-    @JoinTable(
-            name = "promotion_category",
-            joinColumns = @JoinColumn(name = "promotion_id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id")
-    )
+    @JsonBackReference
+    @ManyToMany(mappedBy = "promotions")
     private Set<ProductCategory> categories;
-
 }

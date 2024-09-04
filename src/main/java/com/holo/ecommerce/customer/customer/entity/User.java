@@ -1,5 +1,8 @@
 package com.holo.ecommerce.customer.customer.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.holo.ecommerce.customer.address.entity.Address;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -26,6 +29,7 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @JsonManagedReference
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "user_address",

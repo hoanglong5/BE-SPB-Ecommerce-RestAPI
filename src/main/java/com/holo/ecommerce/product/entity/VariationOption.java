@@ -1,5 +1,6 @@
 package com.holo.ecommerce.product.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,6 +26,7 @@ public class VariationOption {
     @JoinColumn(name = "variation_id")
     private Variation variation;
 
+    @JsonBackReference
     @ManyToMany
     @JoinTable(
             name = "product_configuration",

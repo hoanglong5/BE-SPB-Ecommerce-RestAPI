@@ -1,10 +1,15 @@
 package com.holo.ecommerce.customer.address.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.holo.ecommerce.customer.customer.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.Set;
 
 @Entity
 @Getter
@@ -26,4 +31,7 @@ public class Address {
     private String city;
     @Column(name = "region")
     private String region;
+    @JsonBackReference
+    @ManyToMany(mappedBy = "addresses")
+    private Set<User> users;
 }
