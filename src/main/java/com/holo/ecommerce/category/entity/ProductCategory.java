@@ -39,7 +39,6 @@ public class ProductCategory {
     private Set<Variation> variations;
 
     @JsonManagedReference
-    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "promotion_category",

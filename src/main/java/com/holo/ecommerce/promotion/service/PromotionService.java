@@ -3,13 +3,14 @@ package com.holo.ecommerce.promotion.service;
 import com.holo.ecommerce.promotion.entity.Promotion;
 import com.holo.ecommerce.promotion.service.entityservice.PromotionEntityService;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class PromotionService {
     private final PromotionEntityService promotionEntityService;
     public List<Promotion> GetAllPromotion(){

@@ -1,9 +1,12 @@
 package com.holo.ecommerce.customer.customer.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.holo.ecommerce.cart.entity.Cart;
 import com.holo.ecommerce.customer.address.entity.Address;
+import com.holo.ecommerce.order.entity.ShopOrder;
+import com.holo.ecommerce.payment.entity.UserPaymentMethod;
+import com.holo.ecommerce.review.entity.Review;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -37,4 +40,18 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "address_id")
     )
     private Set<Address> addresses;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL )
+    private Set<UserPaymentMethod> userPaymentMethods;
+    @JsonIgnore
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private Set<Cart> carts;
+    @JsonIgnore
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private Set<Review> reviews;
+    @JsonIgnore
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private Set<ShopOrder> shopOrders;
+
 }

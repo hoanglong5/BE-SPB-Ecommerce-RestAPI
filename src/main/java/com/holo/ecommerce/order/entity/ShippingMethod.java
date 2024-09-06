@@ -1,4 +1,4 @@
-package com.holo.ecommerce.payment.entity;
+package com.holo.ecommerce.order.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -10,19 +10,19 @@ import lombok.Setter;
 import java.util.Set;
 
 @Entity
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "payment_type", schema = "public")
-public class PaymentType {
+@Getter
+@Setter
+@Table(name = "shipping_method",schema = "public")
+public class ShippingMethod {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "value")
-    private String type;
+    private String name;
+    private Long price;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "paymentType",cascade = CascadeType.ALL)
-    private Set<UserPaymentMethod> userPaymentMethods;
+    @OneToMany(mappedBy = "shippingMethod",cascade = CascadeType.ALL)
+    private Set<ShopOrder> shopOrders;
 }

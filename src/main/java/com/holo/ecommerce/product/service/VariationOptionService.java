@@ -5,12 +5,13 @@ import com.holo.ecommerce.product.entity.VariationOption;
 import com.holo.ecommerce.product.service.entityservice.VariationEntityService;
 import com.holo.ecommerce.product.service.entityservice.VariationOptionEntityService;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class VariationOptionService {
     private final VariationOptionEntityService optionEntityService;
     private final VariationService variationService;

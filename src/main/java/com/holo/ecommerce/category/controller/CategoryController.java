@@ -38,13 +38,13 @@ public class CategoryController {
     @DeleteMapping("/{productCategoryId}")
     public ResponseEntity<RestResponse<ProductCategory>> DeleteCategoryById(@PathVariable Long productCategoryId){
         RestResponse<ProductCategory> response = RestResponse.of(categoryService.DeleteCategory(productCategoryId));
-        response.setMessages(CategoryMessageResponse.SUCCESSFULLY_UPDATED_CATEGORY.getMessage());
+        response.setMessages(CategoryMessageResponse.SUCCESSFULLY_DELETE_CATEGORY.getMessage());
         return ResponseEntity.ok(response);
     }
     @PostMapping
     public ResponseEntity<RestResponse<ProductCategory>> CreateCategory(@RequestBody ProductCategory productCategoryCreating){
         RestResponse<ProductCategory> response = RestResponse.of(categoryService.CreateCategory(productCategoryCreating));
-        response.setMessages(CategoryMessageResponse.SUCCESSFULLY_UPDATED_CATEGORY.getMessage());
+        response.setMessages(CategoryMessageResponse.SUCCESSFULLY_CREATED_CATEGORY.getMessage());
         return ResponseEntity.ok(response);
     }
 }

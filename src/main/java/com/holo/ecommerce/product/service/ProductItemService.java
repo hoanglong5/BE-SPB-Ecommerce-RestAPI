@@ -8,6 +8,7 @@ import com.holo.ecommerce.product.entity.VariationOption;
 import com.holo.ecommerce.product.service.entityservice.ProductEntityService;
 import com.holo.ecommerce.product.service.entityservice.ProductItemEntityService;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -16,7 +17,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ProductItemService {
     private final ProductItemEntityService productItemEntityService;
     private final ProductService productService;

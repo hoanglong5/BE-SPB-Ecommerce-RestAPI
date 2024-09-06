@@ -5,13 +5,14 @@ import com.holo.ecommerce.category.service.ProductCategoryService;
 import com.holo.ecommerce.product.entity.Product;
 import com.holo.ecommerce.product.service.entityservice.ProductEntityService;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ProductService {
     private final ProductEntityService productEntityService;
     private final ProductCategoryService productCategoryService;

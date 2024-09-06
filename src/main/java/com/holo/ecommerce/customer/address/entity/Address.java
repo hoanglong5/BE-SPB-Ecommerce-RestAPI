@@ -3,6 +3,7 @@ package com.holo.ecommerce.customer.address.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.holo.ecommerce.customer.customer.entity.User;
+import com.holo.ecommerce.order.entity.ShopOrder;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,4 +35,8 @@ public class Address {
     @JsonBackReference
     @ManyToMany(mappedBy = "addresses")
     private Set<User> users;
+
+    @OneToMany(mappedBy = "address",cascade = CascadeType.ALL)
+    private Set<ShopOrder> shopOrders;
+
 }

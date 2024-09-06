@@ -27,7 +27,7 @@ public class PromotionController {
         response.setMessages(PromotionMessageResponse.SUCCESSFULLY_FIND_PROMOTION_BY_ID.getMessage());
         return ResponseEntity.ok(response);
     }
-    @GetMapping("/{promotionId}")
+    @DeleteMapping("/{promotionId}")
     public ResponseEntity<RestResponse<Promotion>> DeletePromotion(@PathVariable Long promotionId){
         RestResponse<Promotion> response = RestResponse.of(promotionService.DeletePromotion(promotionId));
         response.setMessages(PromotionMessageResponse.SUCCESSFULLY_DELETE_PROMOTION.getMessage());
