@@ -3,10 +3,7 @@ package com.holo.ecommerce.cart.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.holo.ecommerce.customer.customer.entity.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Set;
 
@@ -15,6 +12,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @Setter
+@Data
 @Table(name = "shopping_cart",schema = "public")
 public class Cart {
     @Id

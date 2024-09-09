@@ -2,10 +2,7 @@ package com.holo.ecommerce.cart.entity;
 
 import com.holo.ecommerce.product.entity.ProductItem;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 
 @Entity
@@ -13,11 +10,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
+@Data
 @Table(name = "shopping_cart_item",schema = "public")
 public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "qty")
     private Long quantity;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cart_id")

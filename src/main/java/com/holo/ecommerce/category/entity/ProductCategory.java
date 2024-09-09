@@ -1,6 +1,7 @@
 package com.holo.ecommerce.category.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.holo.ecommerce.product.entity.Product;
 import com.holo.ecommerce.product.entity.Variation;
@@ -28,16 +29,20 @@ public class ProductCategory {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_category_id")
     private ProductCategory parentCategory;
+
     @JsonIgnore
     @OneToMany(mappedBy = "parentCategory", cascade = CascadeType.ALL)
     private Set<ProductCategory> subCategories;
+
     @JsonIgnore
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private Set<Product> products;
+
     @JsonIgnore
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private Set<Variation> variations;
 
+    @JsonIgnore
     @JsonManagedReference
     @ManyToMany
     @JoinTable(

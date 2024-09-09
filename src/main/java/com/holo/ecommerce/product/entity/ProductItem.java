@@ -32,6 +32,7 @@ public class ProductItem {
     private Long price;
 
     @JsonManagedReference
+    @JsonIgnore
     @ManyToMany(mappedBy = "productItems",cascade = CascadeType.ALL)
     private Set<VariationOption> variationOptions;
 

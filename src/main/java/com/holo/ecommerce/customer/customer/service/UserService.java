@@ -6,6 +6,8 @@ import com.holo.ecommerce.customer.customer.entity.User;
 import com.holo.ecommerce.customer.customer.repository.UserRepository;
 import com.holo.ecommerce.customer.customer.service.UserEntityService.UserEntityService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,13 +27,19 @@ public class UserService {
     public User GetUser(Long userId){
         return userEntityService.FindUserById(userId);
     }
+    public User GetUserByEmail(String email){
+        return userEntityService.FindUserByEmailAddress(email);
+    }
+
     @Transactional
     public User CreateUser(User userCreating){
         User user = new User();
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
         //Creating
         user.setEmailAddress(userCreating.getEmailAddress());
-        user.setPassword(userCreating.getPassword());
+        user.setPassword(passwordEncoder.encode(userCreating.getPassword()));
         user.setPhoneNumber(userCreating.getPhoneNumber());
+        user.setRole(userCreating.getRole());
         user.setAddresses(new HashSet<>());
         //Find all addresses in updating user
         for (Address address : userCreating.getAddresses()){
@@ -87,6 +95,7 @@ public class UserService {
         user.setPassword(userUpdating.getPassword());
         user.setPhoneNumber(userUpdating.getPhoneNumber());
         user.setEmailAddress(userUpdating.getEmailAddress());
+        user.setRole(userUpdating.getRole());
         userEntityService.SaveUser(user);
         return user;
     }

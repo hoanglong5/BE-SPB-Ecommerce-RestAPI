@@ -30,16 +30,16 @@ public class ShopOrder {
     @JoinColumn(name = "user_id")
     private User user;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "address_id")
+    @JoinColumn(name = "shipping_address")
     private Address address;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "payment_method_id")
     private UserPaymentMethod userPaymentMethod;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "shipping_method_id")
+    @JoinColumn(name = "shipping_method")
     private ShippingMethod shippingMethod;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_status_id")
+    @JoinColumn(name = "order_status")
     private OrderStatus orderStatus;
 
     @JsonIgnore

@@ -21,6 +21,7 @@ public class OrderLine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "qty")
     private Long quantity;
     private Long price;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -28,7 +29,7 @@ public class OrderLine {
     private ProductItem productItem;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "shop_order_id")
+    @JoinColumn(name = "order_id")
     private ShopOrder shopOrder;
 
     @JsonIgnore

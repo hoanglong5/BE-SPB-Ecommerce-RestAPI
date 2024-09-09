@@ -1,6 +1,7 @@
 package com.holo.ecommerce.product.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.holo.ecommerce.category.entity.ProductCategory;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

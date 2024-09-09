@@ -1,5 +1,6 @@
 package com.holo.ecommerce.review.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.holo.ecommerce.customer.customer.entity.User;
 import com.holo.ecommerce.order.entity.OrderLine;
 import jakarta.persistence.*;
@@ -20,8 +21,9 @@ public class Review {
     private Long id;
     private int ratingValue;
     private String comment;
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_line_id")
+    @JoinColumn(name = "ordered_product_id")
     private OrderLine orderLine;
 
     @ManyToOne(fetch = FetchType.LAZY)

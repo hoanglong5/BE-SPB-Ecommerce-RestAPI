@@ -31,8 +31,10 @@ public class User {
     private String phoneNumber;
     @Column(name = "password")
     private String password;
+    @Column(name = "role")
+    private String role;
 
-    @JsonManagedReference
+//    @JsonManagedReference
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "user_address",

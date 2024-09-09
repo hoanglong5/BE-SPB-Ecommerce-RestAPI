@@ -1,6 +1,7 @@
 package com.holo.ecommerce.customer.address.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.holo.ecommerce.customer.customer.entity.User;
 import com.holo.ecommerce.order.entity.ShopOrder;
@@ -32,10 +33,11 @@ public class Address {
     private String city;
     @Column(name = "region")
     private String region;
-    @JsonBackReference
+    @JsonIgnore
+//    @JsonBackReference
     @ManyToMany(mappedBy = "addresses")
     private Set<User> users;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "address",cascade = CascadeType.ALL)
     private Set<ShopOrder> shopOrders;
 

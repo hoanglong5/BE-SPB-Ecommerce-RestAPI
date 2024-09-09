@@ -4,6 +4,8 @@ import com.holo.ecommerce.base.controller.RestResponse;
 import com.holo.ecommerce.cart.entity.Cart;
 import com.holo.ecommerce.cart.enums.CartMessageResponse;
 import com.holo.ecommerce.cart.service.CartService;
+import com.holo.ecommerce.customer.customer.entity.User;
+import com.holo.ecommerce.customer.customer.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CartController {
     private final CartService cartService;
+    private final UserService userService;
     @GetMapping
     public ResponseEntity<RestResponse<List<Cart>>> GetAllCart(){
         RestResponse<List<Cart>> response = RestResponse.of(cartService.GetAllCart());
@@ -35,6 +38,7 @@ public class CartController {
     }
     @PostMapping()
     public ResponseEntity<RestResponse<Cart>> CreateCart(Cart cartCreating){
+        User user = userService.GetUser(cartCreating.getUser().getId());
         RestResponse<Cart> response = RestResponse.of(cartService.CreateCart(cartCreating));
         response.setMessages(CartMessageResponse.SUCCESSFULLY_CREATED_CART.getMessage());
         return ResponseEntity.ok(response);
